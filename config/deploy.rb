@@ -14,6 +14,9 @@ set :runner, "www-data"
 set :deploy_to, "/var/www/#{application}"
 set :app_server, :passenger
 set :domain, "liftrapp.com"
+
+set :s3_bucket, "mc-assets"
+
 #========================
 #ROLES
 #========================
@@ -24,14 +27,23 @@ role :db, domain, :primary => true
 #CUSTOM
 #========================
 namespace :deploy do
-task :start, :roles => :app do
-run "touch #{current_release}/tmp/restart.txt"
+  task :start, :roles => :app do
+    run "touch #{current_release}/tmp/restart.txt"
+  end
+  task :stop, :roles => :app do
+    # Do nothing.
+  end
+  desc "Restart Application"
+  task :restart, :roles => :app do
+    run "touch #{current_release}/tmp/restart.txt"
+  end
 end
-task :stop, :roles => :app do
-# Do nothing.
+
+namespace :s3 do
+  desc "Sync s3 assets"
+  task :sync_public do
+    run "s3sync -r -v --exclude=\".*\" ./public/ #{s3_bucket}:"
+  end
 end
-desc "Restart Application"
-task :restart, :roles => :app do
-run "touch #{current_release}/tmp/restart.txt"
-end
-end
+
+before "deploy:symlink", "s3:sync_public"
