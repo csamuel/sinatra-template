@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>monica ceniceros :: artist</title>
+    
+<link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen, projection"/>
+<link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print"/> 
+<!--[if IE]>
+  <link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"/>
+<![endif]-->
+<link rel="stylesheet" type="text/css" media="screen" href="/javascripts/shadowbox/shadowbox.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/screen.css"/>
+
+
+<script type="text/javascript" src="/javascripts/shadowbox/shadowbox.js"></script>
+<script type="text/javascript" src="/javascripts/jquery-1.3.2.min.js"></script>
+
+<script type="text/javascript">	
+	Shadowbox.init({
+	    players:  ['img', 'html']
+	});
+	$(document).ready(function() {
+    $('a.portfolio').click(function(){
+			Shadowbox.open(document.getElementById('lluvia'));
+		});
+ 	});
+</script>
+
+</head>
+
+<body>
+
+ 	<%= yield %>
+
+	<!-- Google Analytics -->
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	
+	<script type="text/javascript">
+		try {
+			var pageTracker = _gat._getTracker("UA-6807338-1");
+			pageTracker._trackPageview();
+		} 
+		catch(err) {}
+	</script>	
+
+</body>
+</html>
